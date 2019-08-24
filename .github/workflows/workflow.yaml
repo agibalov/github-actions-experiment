@@ -4,3 +4,4 @@ on: push
 jobs:
   build:
     name: My dummy job
+    run: echo "hello world!"
