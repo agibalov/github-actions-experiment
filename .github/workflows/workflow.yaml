@@ -16,7 +16,6 @@ jobs:
       image: ubuntu:18.04
     steps:
       - uses: actions/checkout@v1
-      - run: aws --version
       - run: java -version
       - run: ./gradlew clean test
   build-docker-image:
