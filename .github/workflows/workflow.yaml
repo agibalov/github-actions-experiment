@@ -11,3 +11,4 @@ jobs:
       - run: ls
       #- run: ./gradlew clean test
       - uses: docker://java:8
+        run: ./gradlew clean test
