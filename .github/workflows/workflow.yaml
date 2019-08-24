@@ -3,5 +3,7 @@ on: push
 
 jobs:
   build:
-    name: My dummy job
-    run: echo "hello world!"
+    steps:
+      - name: My dummy step
+        uses: docker://alpine:3.8
+        run: echo "hello world!"
