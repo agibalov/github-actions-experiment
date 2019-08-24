@@ -13,7 +13,7 @@ jobs:
   run-tests-in-docker:
     runs-on: ubuntu-18.04
     container:
-      image: ubuntu:18.04
+      image: java:8
     steps:
       - uses: actions/checkout@v1
       - run: ./gradlew clean test
