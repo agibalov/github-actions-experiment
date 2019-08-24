@@ -3,9 +3,10 @@ on: push
 
 jobs:
   build:
-    runs-on: openjdk:8
+    #runs-on: openjdk:8
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - run: echo "hello world!"
       - run: ls
-      - run: ./gradlew clean test
+      #- run: ./gradlew clean test
