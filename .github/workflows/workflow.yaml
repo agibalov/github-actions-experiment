@@ -1,0 +1,6 @@
+name: My dummy workflow
+on: push
+
+jobs:
+  build:
+    name: My dummy job
