@@ -2,13 +2,15 @@ name: My dummy workflow
 on: push
 
 jobs:
-  build:
+  run-tests:
     runs-on: ubuntu-18.04
-    #runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: docker://java:8
+      - run: ./gradlew clean test
+  build-docker-image:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - run: echo "hello world!"
       - run: ls
-      #- run: ./gradlew clean test
-      - uses: docker://java:8
-      - run: ./gradlew clean test
