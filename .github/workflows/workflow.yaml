@@ -17,7 +17,15 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: ./gradlew clean test
-      - name: Use secret
+  build-docker-image:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - run: docker build .
+  use-context:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Use context
         env:
           THE_SECRET: ${{secrets.MY_SECRET}} # create manually using Github UI
           THE_NOT_SECRET: qwerty
@@ -28,8 +36,3 @@ jobs:
           echo "The not secret: ${THE_NOT_SECRET}"
           echo "Github ref: ${GITHUB_REF}"
           echo "Github SHA: ${GITHUB_SHA}"
-  build-docker-image:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
-      - run: docker build .
