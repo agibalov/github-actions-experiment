@@ -13,10 +13,11 @@ jobs:
   run-tests-in-docker:
     runs-on: ubuntu-18.04
     container:
-      image: java:8
+      image: java:8-jdk
     steps:
       - uses: actions/checkout@v1
       - run: ./gradlew clean test
+      - run: echo "hello world"
   build-docker-image:
     runs-on: ubuntu-18.04
     steps:
