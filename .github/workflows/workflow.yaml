@@ -20,8 +20,12 @@ jobs:
       - name: Use secret
         env:
           THE_SECRET: ${{secrets.MY_SECRET}}
+          THE_NOT_SECRET: qwerty
+          GITHUB_CONTEXT_JSON: ${{toJson(github)}}
         run: |
-          echo "The secret is: ${THE_SECRET}"
+          echo "The secret: ${THE_SECRET}"
+          echo "The not secret: ${THE_NOT_SECRET}"
+          echo "Github context: ${GITHUB_CONTEXT_JSON}"
   build-docker-image:
     runs-on: ubuntu-18.04
     steps:
