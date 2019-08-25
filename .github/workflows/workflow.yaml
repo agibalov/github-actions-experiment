@@ -1,8 +1,9 @@
-name: My dummy workflow
+name: Build on push
 on: push
 
 jobs:
   run-tests:
+    name: Run tests without Docker
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
@@ -11,6 +12,7 @@ jobs:
           java-version: '8'
       - run: ./gradlew clean test
   run-tests-in-docker:
+    name: Run tests in Docker
     runs-on: ubuntu-18.04
     container:
       image: java:8-jdk
@@ -18,11 +20,13 @@ jobs:
       - uses: actions/checkout@v1
       - run: ./gradlew clean test
   build-docker-image:
+    name: Build Docker image
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - run: docker build .
   use-context:
+    name: Use the build context
     runs-on: ubuntu-18.04
     steps:
       - name: Use context
