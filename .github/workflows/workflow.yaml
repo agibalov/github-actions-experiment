@@ -19,13 +19,15 @@ jobs:
       - run: ./gradlew clean test
       - name: Use secret
         env:
-          THE_SECRET: ${{secrets.MY_SECRET}}
+          THE_SECRET: ${{secrets.MY_SECRET}} # create manually using Github UI
           THE_NOT_SECRET: qwerty
-          GITHUB_CONTEXT_JSON: ${{toJson(github)}}
+          GITHUB_REF: ${{github.ref}}
+          GITHUB_SHA: ${{github.sha}}
         run: |
           echo "The secret: ${THE_SECRET}"
           echo "The not secret: ${THE_NOT_SECRET}"
-          echo "Github context: ${GITHUB_CONTEXT_JSON}"
+          echo "Github ref: ${GITHUB_REF}"
+          echo "Github SHA: ${GITHUB_SHA}"
   build-docker-image:
     runs-on: ubuntu-18.04
     steps:
